@@ -1,0 +1,845 @@
+import tkinter
+import random
+import time
+food = 0
+energy = 100
+wood = 0
+day = 0
+rock = 0
+skin = 0
+bow = 0
+spear = 0
+random_wood = random.randrange(1, 33)
+random_food = random.randrange(0, 3)
+random_rock = random.randrange(0, 2)
+def gathering_btn():
+    global energy
+    if energy <= 40:
+        hunting.config(state="disabled")
+    else:
+        hunting.config(state="normal")
+    if energy <= 30:
+        gathering.config(state="disabled")
+        building.config(state="disabled")
+    else:
+        gathering.config(state="normal")
+        building.config(state="normal")
+    if wood >= 500:
+        raft_build.config(state="normal")
+    gathering_window = tkinter.Tk()
+    gathering_window.configure(bg="orange")
+    gathering_window.geometry("500x150")
+    gathering_window.title("Gather!!")
+    global food
+    global rock
+    global random_wood
+    global random_food
+    global random_rock
+   
+    def wood_take_func():
+        global energy
+        energy = energy - 30
+        energygy = "ENERGY: {}%".format(energy)
+        energy_Label.config(text=energygy)
+        global wood
+        global random_wood
+        wood = wood + random_wood
+        woodod = "WOOD: {}".format(wood)
+        woodwod.config(text=woodod)
+        if energy <= 40:
+            hunting.config(state="disabled")
+        else:
+            hunting.config(state="normal")
+        if energy <= 30:
+            gathering.config(state="disabled")
+            building.config(state="disabled")
+        else:
+            gathering.config(state="normal")
+            building.config(state="normal")
+        if wood >= 500:
+            raft_build.config(state="normal")
+        if energy <= 30:
+            wood_take.config(state="disabled")
+            food_take.config(state="disabled")
+            rock_take.config(state="disabled")
+    def food_take_func():
+        global energy
+        energy = energy - 30
+        energygy = "ENERGY: {}%".format(energy)
+        energy_Label.config(text=energygy)
+        global food
+        global random_food
+        food = food + random_food
+        fod = "FOOD: {}".format(food)
+        foodod.config(text=fod)
+        if energy < 40:
+            hunting.config(state="disabled")
+        else:
+            hunting.config(state="normal")
+        if energy < 30:
+            gathering.config(state="disabled")
+            building.config(state="disabled")
+        else:
+            gathering.config(state="normal")
+            building.config(state="normal")
+        if wood >= 500:
+            raft_build.config(state="normal")
+        if energy < 30:
+            wood_take.config(state="disabled")
+            food_take.config(state="disabled")
+            rock_take.config(state="disabled")
+    def rock_take_func():
+        global energy
+        energy = energy - 30
+        energygy = "ENERGY: {}%".format(energy)
+        energy_Label.config(text=energygy)
+        global rock
+        global random_rock
+        rock = rock + random_rock
+        rockok = "Rock: {}".format(rock)
+        rockk.config(text=rockok)
+        if energy < 40:
+            hunting.config(state="disabled")
+        else:
+            hunting.config(state="normal")
+        if energy < 30:
+            gathering.config(state="disabled")
+            building.config(state="disabled")
+        else:
+            gathering.config(state="normal")
+            building.config(state="normal")
+        if wood >= 500:
+            raft_build.config(state="normal")
+        if energy < 30:
+            wood_take.config(state="disabled")
+            food_take.config(state="disabled")
+            rock_take.config(state="disabled")
+    tile = tkinter.Label(gathering_window,
+                         text="Go gathering. The depository shows you how many wood/food/rock you can take", bg="orange")
+    deposit_text = "You have {} wood, {} food, {} rock.".format(wood, food, rock)
+    deposit = tkinter.Label(gathering_window, text=deposit_text, bg="orange")
+    wood_speech = "Take {} wood".format(random_wood)
+    wood_take = tkinter.Button(gathering_window, text=wood_speech, command=wood_take_func, bg="cyan")
+    food_speech = "Take {} food".format(random_food)
+    food_take = tkinter.Button(gathering_window, text=food_speech, command=food_take_func, bg="cyan")
+    rock_speech = "Take {} rock".format(random_rock)
+    rock_take = tkinter.Button(gathering_window, text=rock_speech, command=rock_take_func, bg="cyan")
+    tile.pack()
+    deposit.pack()
+    wood_take.pack()
+    food_take.pack()
+    rock_take.pack()
+    gathering_window.mainloop()
+
+def building_btn():
+    global spear
+    global bow
+    def spearr():
+        global spear
+        spear = 1
+        global wood
+        wood = wood - 25
+        woodod = "WOOD: {}".format(wood)
+        woodwod.config(text=woodod)
+        global rock
+        rock = rock - 2
+        rockok = "Rock: {}".format(rock)
+        rockk.config(rockok)
+        spear_button.config(state="disabled")
+        if energy < 40:
+            hunting.config(state="disabled")
+        else:
+            hunting.config(state="normal")
+        if energy < 30:
+            gathering.config(state="disabled")
+            building.config(state="disabled")
+        else:
+            gathering.config(state="normal")
+            building.config(state="normal")
+        spear_button.config(state="disabled")
+    if wood >= 500:
+        raft_build.config(state="normal")
+
+    def boww():
+        global bow
+        bow = 1
+        global wood
+        wood = wood - 35
+        woodod = "WOOD: {}".format(wood)
+        woodwod.config(text=woodod)
+        global skin
+        skin = skin - 3
+        skiner = "Skin: {}".format(skin)
+        skinn.config(text=skiner)
+        bow_button.config(state="disabled")
+        if energy < 40:
+            hunting.config(state="disabled")
+        else:
+            hunting.config(state="normal")
+        if energy < 30:
+            gathering.config(state="disabled")
+            building.config(state="disabled")
+        else:
+            gathering.config(state="normal")
+            building.config(state="normal")
+        bow_button.config(state="disabled")
+        if wood >= 500:
+            raft_build.config(state="normal")
+    building_window = tkinter.Tk()
+    building_window.geometry("500x200")
+    building_window.title("What would you like to build?")
+    building_window.configure(bg="green")
+    spear_button = tkinter.Button(building_window, command=spearr, state="disabled")
+    bow_button = tkinter.Button(building_window, command=boww, state="disabled")
+    spear_label = tkinter.Label(building_window, text="Spear - to get this spear you have to gather 25 wood and 2 rock", bg="green")
+    bow_label = tkinter.Label(building_window, text="Bow - to get this bow you have to gather 35 wood and 8 skin", bg="green")
+    bow_button.pack()
+    bow_label.pack()
+    spear_button.pack()
+    spear_label.pack()
+    global rock
+    global skin
+    if wood > 24 and rock > 1:
+        spear_button.config(state="normal")
+    if wood > 34 and skin > 7:
+        bow_button.config(state="normal")
+    if energy < 30:
+        bow_button.config(state="disabled")
+        spear_button.config(state="disabled")
+    building_window.mainloop()
+
+def hunting_btn():
+    global energy
+    if energy <= 40:
+        hunting.config(state="disabled")
+    else:
+        hunting.config(state="normal")
+    if energy <= 30:
+        gathering.config(state="disabled")
+        building.config(state="disabled")
+    else:
+        gathering.config(state="normal")
+        building.config(state="normal")
+    if wood >= 500:
+        raft_build.config(state="normal")
+    hunting_window = tkinter.Tk()
+    hunting_window.configure(bg="beige")
+    hunting_window.geometry("400x400")
+    hunting_window.title("Hunting menu... Hmmmmm what to eat today :D")
+    choice = tkinter.Label(hunting_window, text="Choose and animal to hunt", bg="beige")
+   
+    def rollthedicemice():
+        global energy
+        if energy < 40:
+            mice.config(state="disabled")
+            fish.config(state="disabled")
+            bird.config(state="disabled")
+            buffalo.config(state="disabled")
+            rabbit.config(state="disabled")
+            wolf.config(state="disabled")
+        hunting_window.destroy()
+        roll_window = tkinter.Tk()
+        roll_window.geometry("400x100")
+        roll_window.configure(bg="beige")
+        roll_window.title("Roll the dice")
+        if energy < 40:
+            hunting.config(state="disabled")
+        else:
+            hunting.config(state="normal")
+        if energy < 30:
+            gathering.config(state="disabled")
+            building.config(state="disabled")
+        else:
+            gathering.config(state="normal")
+            building.config(state="normal")
+        if wood >= 500:
+            raft_build.config(state="normal")
+        def roll_the_dice_mice():
+            global energy
+            if energy <= 40:
+                hunting.config(state="disabled")
+            else:
+                hunting.config(state="normal")
+            if energy <= 30:
+                gathering.config(state="disabled")
+                building.config(state="disabled")
+            else:
+                gathering.config(state="normal")
+                building.config(state="normal")
+            if wood >= 500:
+                raft_build.config(state="normal")
+            roll.config(state="disabled")
+            dice = random.randrange(1, 6)
+            energy = energy - 40
+            energygy = "ENERGY: {}%".format(energy)
+            energy_Label.config(text=energygy)
+            if dice == 6:
+                roll_outcome.config(text="You have tried to get some mice but there were none.")
+            else:
+                roll_outcome.config(text="You have got yourself 1 skin and 1 food.")
+                global skin
+                global food
+                food = food + 1
+                fod = "FOOD: {}".format(food)
+                foodod.config(text=fod)
+                skin = skin + 1
+                skiner = "Skin: {}".format(skin)
+                skinn.config(text=skiner)
+            if energy <= 40:
+                hunting.config(state="disabled")
+            else:
+                hunting.config(state="normal")
+            if energy <= 30:
+                gathering.config(state="disabled")
+                building.config(state="disabled")
+            else:
+                gathering.config(state="normal")
+                building.config(state="normal")
+        roll_title = tkinter.Label(roll_window, text="Roll the dice to find out if you can get your meal", bg="beige")
+        roll_huw_much = tkinter.Label(roll_window, text="You can't roll a 6", bg="beige")
+        roll = tkinter.Button(roll_window, text="ROLL", command=roll_the_dice_mice, bg="green")
+        roll_outcome = tkinter.Label(roll_window, bg="beige")
+        roll_title.pack()
+        roll_huw_much.pack()
+        roll.pack()
+        roll_outcome.pack()
+        roll_window.mainloop()
+    def rollthedicefish():
+        global energy
+        if energy < 40:
+            mice.config(state="disabled")
+            fish.config(state="disabled")
+            bird.config(state="disabled")
+            buffalo.config(state="disabled")
+            rabbit.config(state="disabled")
+            wolf.config(state="disabled")
+        hunting_window.destroy()
+        roll_window = tkinter.Tk()
+        roll_window.configure(bg="beige")
+        roll_window.geometry("400x500")
+        roll_window.title("Roll the dice")
+        if energy < 40:
+            hunting.config(state="disabled")
+        else:
+            hunting.config(state="normal")
+        if energy < 30:
+            gathering.config(state="disabled")
+            building.config(state="disabled")
+        else:
+            gathering.config(state="normal")
+            building.config(state="normal")
+        if wood >= 500:
+            raft_build.config(state="normal")
+        def roll_the_dice_fish():
+            global energy
+            if energy <= 40:
+                hunting.config(state="disabled")
+            else:
+                hunting.config(state="normal")
+            if energy <= 30:
+                gathering.config(state="disabled")
+                building.config(state="disabled")
+            else:
+                gathering.config(state="normal")
+                building.config(state="normal")
+            if wood >= 500:
+                raft_build.config(state="normal")
+            dice = random.randrange(1, 6)
+            roll.config(state="disabled")
+            energy = energy - 40
+            energygy = "ENERGY: {}%".format(energy)
+            energy_Label.config(text=energygy)
+            if dice == 5:
+                roll_outcome.config(text="You have tried to get some fish but the sea is too deep.")
+            elif dice == 4:
+                roll_outcome.config(text="Your aim with the spear is really bad")
+            else:
+                roll_outcome.config(text="You have got yourself 3 pieces of food.")
+                global skin
+                global food
+                food = food + 3
+                fod = "FOOD: {}".format(food)
+                foodod.config(text=fod)
+            if energy <= 40:
+                hunting.config(state="disabled")
+            else:
+                hunting.config(state="normal")
+            if energy <= 30:
+                gathering.config(state="disabled")
+                building.config(state="disabled")
+            else:
+                gathering.config(state="normal")
+                building.config(state="normal")
+        roll_title = tkinter.Label(roll_window, text="Roll the dice to find out if you can get your meal", bg="beige")
+        roll_huw_much = tkinter.Label(roll_window, text="You can't roll a 5 and a 4", bg="beige")
+        roll = tkinter.Button(roll_window, text="ROLL", command=roll_the_dice_fish, bg="green")
+        roll_outcome = tkinter.Label(roll_window, bg="beige")
+        roll_title.pack()
+        roll_huw_much.pack()
+        roll.pack()
+        roll_outcome.pack()
+        roll_window.mainloop()
+    def rollthedicebird():
+        global energy
+        if energy < 40:
+            mice.config(state="disabled")
+            fish.config(state="disabled")
+            bird.config(state="disabled")
+            buffalo.config(state="disabled")
+            rabbit.config(state="disabled")
+            wolf.config(state="disabled")
+        hunting_window.destroy()
+        roll_window = tkinter.Tk()
+        roll_window.configure(bg="beige")
+        roll_window.geometry("400x500")
+        roll_window.title("Roll the dice")
+        if energy < 40:
+            hunting.config(state="disabled")
+        else:
+            hunting.config(state="normal")
+        if energy < 30:
+            gathering.config(state="disabled")
+            building.config(state="disabled")
+        else:
+            gathering.config(state="normal")
+            building.config(state="normal")
+        if wood >= 500:
+            raft_build.config(state="normal")
+        def roll_the_dice_bird():
+            global energy
+            if energy <= 40:
+                hunting.config(state="disabled")
+            else:
+                hunting.config(state="normal")
+            if energy <= 30:
+                gathering.config(state="disabled")
+                building.config(state="disabled")
+            else:
+                gathering.config(state="normal")
+                building.config(state="normal")
+            if wood >= 500:
+                raft_build.config(state="normal")
+            dice = random.randrange(1, 6)
+            roll.config(state="disabled")
+            energy = energy - 40
+            energygy = "ENERGY: {}%".format(energy)
+            energy_Label.config(text=energygy)
+            if dice == 1:
+                roll_outcome.config(text="The bird escaped from your reach")
+            elif dice == 5:
+                roll_outcome.config(text="You didn't get the bird")
+            else:
+                roll_outcome.config(text="You have got yourself 2 skin and 2 food.")
+                global skin
+                global food
+                food = food + 2
+                fod = "FOOD: {}".format(food)
+                foodod.config(text=fod)
+                skin = skin + 2
+                skiner = "Skin: {}".format(skin)
+                skinn.config(text=skiner)
+            if energy <= 40:
+                hunting.config(state="disabled")
+            else:
+                hunting.config(state="normal")
+            if energy <= 30:
+                gathering.config(state="disabled")
+                building.config(state="disabled")
+            else:
+                gathering.config(state="normal")
+                building.config(state="normal")
+        roll_title = tkinter.Label(roll_window, text="Roll the dice to find out if you can get your meal", bg="beige")
+        roll_huw_much = tkinter.Label(roll_window, text="You can't roll a 1 and a 5", bg="beige")
+        roll = tkinter.Button(roll_window, text="ROLL", command=roll_the_dice_bird, bg="green")
+        roll_outcome = tkinter.Label(roll_window, bg="beige")
+        roll_title.pack()
+        roll_huw_much.pack()
+        roll.pack()
+        roll_outcome.pack()
+        roll_window.mainloop()
+    def rollthedicebuffalo():
+        if energy < 40:
+            mice.config(state="disabled")
+            fish.config(state="disabled")
+            bird.config(state="disabled")
+            buffalo.config(state="disabled")
+            rabbit.config(state="disabled")
+            wolf.config(state="disabled")
+        hunting_window.destroy()
+        roll_window = tkinter.Tk()
+        roll_window.configure(bg="green")
+        roll_window.geometry("400x500")
+        roll_window.title("Roll the dice")
+        energy_Label.config(text=energygy)
+        if energy < 40:
+            hunting.config(state="disabled")
+        else:
+            hunting.config(state="normal")
+        if energy < 30:
+            gathering.config(state="disabled")
+            building.config(state="disabled")
+        else:
+            gathering.config(state="normal")
+            building.config(state="normal")
+        if wood >= 500:
+            raft_build.config(state="normal")
+        def roll_the_dice_buffalo():
+            global energy
+            if energy <= 40:
+                hunting.config(state="disabled")
+            else:
+                hunting.config(state="normal")
+            if energy <= 30:
+                gathering.config(state="disabled")
+                building.config(state="disabled")
+            else:
+                gathering.config(state="normal")
+                building.config(state="normal")
+            if wood >= 500:
+                raft_build.config(state="normal")
+            dice = random.randrange(1, 6)
+            roll.config(state="disabled")
+            energy = energy - 40
+            energygy = "ENERGY: {}%".format(energy)
+            energy_Label.config(text=energygy)
+            if dice == 6:
+                roll_outcome.config(text="There was a horde of buffalo's and you were scared of them.")
+            elif dice == 4:
+                roll_outcome.config(text="You haven't injured the buffalo too much.")
+            elif dice == 1:
+                roll_outcome.config(text="The buffalo ran away")
+            else:
+                roll_outcome.config(text="After hard work you finally have got yourself 5 skin and 4 food.")
+                global skin
+                global food
+                food = food + 4
+                fod = "FOOD: {}".format(food)
+                foodod.config(text=fod)
+                skin = skin + 5
+                skiner = "Skin: {}".format(skin)
+                skinn.config(text=skiner)
+            if energy <= 40:
+                hunting.config(state="disabled")
+            else:
+                hunting.config(state="normal")
+            if energy <= 30:
+                gathering.config(state="disabled")
+                building.config(state="disabled")
+            else:
+                gathering.config(state="normal")
+                building.config(state="normal")
+        roll_title = tkinter.Label(roll_window, text="Roll the dice to find out if you can get your meal", bg="beige")
+        roll_huw_much = tkinter.Label(roll_window, text="You can't roll a 1, 4 and a 6", bg="beige")
+        roll = tkinter.Button(roll_window, text="ROLL", command=roll_the_dice_buffalo, bg="green")
+        roll_outcome = tkinter.Label(roll_window, bg="beige")
+        roll_title.pack()
+        roll_huw_much.pack()
+        roll.pack()
+        roll_outcome.pack()
+        roll_window.mainloop()
+    def rollthedicerabbit():
+        global energy
+        if energy < 40:
+            mice.config(state="disabled")
+            fish.config(state="disabled")
+            bird.config(state="disabled")
+            buffalo.config(state="disabled")
+            rabbit.config(state="disabled")
+            wolf.config(state="disabled")
+        hunting_window.destroy()
+        roll_window = tkinter.Tk()
+        roll_window.configure(bg="beige")
+        roll_window.geometry("400x500")
+        roll_window.title("Roll the dice")
+        if energy < 40:
+            hunting.config(state="disabled")
+        else:
+            hunting.config(state="normal")
+        if energy < 30:
+            gathering.config(state="disabled")
+            building.config(state="disabled")
+        else:
+            gathering.config(state="normal")
+            building.config(state="normal")
+        if wood >= 500:
+            raft_build.config(state="normal")
+        def roll_the_dice_rabbit():
+            global energy
+            if energy <= 40:
+                hunting.config(state="disabled")
+            else:
+                hunting.config(state="normal")
+            if energy <= 30:
+                gathering.config(state="disabled")
+                building.config(state="disabled")
+            else:
+                gathering.config(state="normal")
+                building.config(state="normal")
+            if wood >= 500:
+                raft_build.config(state="normal")
+            dice = random.randrange(1, 6)
+            roll.config(state="disabled")
+            energy = energy - 40
+            energygy = "ENERGY: {}%".format(energy)
+            energy_Label.config(text=energygy)
+            if dice == 3:
+                roll_outcome.config(text="Your tooooo slow!!")
+            elif dice == 1:
+                roll_outcome.config(text="The rabbit was too skinny to eat.")
+            else:
+                roll_outcome.config(text="After a tiring run you finally have got yourself 3 skin and 2 food.")
+                global skin
+                global food
+                food = food + 2
+                fod = "FOOD: {}".format(food)
+                foodod.config(text=fod)
+                skin = skin + 3
+                skiner = "Skin: {}".format(skin)
+                skinn.config(text=skiner)
+            if energy <= 40:
+                hunting.config(state="disabled")
+            else:
+                hunting.config(state="normal")
+            if energy <= 30:
+                gathering.config(state="disabled")
+                building.config(state="disabled")
+            else:
+                gathering.config(state="normal")
+                building.config(state="normal")
+        roll_title = tkinter.Label(roll_window, text="Roll the dice to find out if you can get your meal", bg="beige")
+        roll_huw_much = tkinter.Label(roll_window, text="You can't roll a 1 and a 3", bg="beige")
+        roll = tkinter.Button(roll_window, text="ROLL", command=roll_the_dice_rabbit, bg="green")
+        roll_outcome = tkinter.Label(roll_window, bg="beige")
+        roll_title.pack()
+        roll_huw_much.pack()
+        roll.pack()
+        roll_outcome.pack()
+        roll_window.mainloop()
+    def rollthedicewolf():
+        if energy < 40:
+            mice.config(state="disabled")
+            fish.config(state="disabled")
+            bird.config(state="disabled")
+            buffalo.config(state="disabled")
+            rabbit.config(state="disabled")
+            wolf.config(state="disabled")
+        hunting_window.destroy()
+        roll_window = tkinter.Tk()
+        roll_window.configure(bg="beige")
+        roll_window.geometry("400x500")
+        roll_window.title("Roll the dice")
+        if energy < 40:
+            hunting.config(state="disabled")
+        else:
+            hunting.config(state="normal")
+        if energy < 30:
+            gathering.config(state="disabled")
+            building.config(state="disabled")
+        else:
+            gathering.config(state="normal")
+            building.config(state="normal")
+        if wood >= 500:
+            raft_build.config(state="normal")
+        def roll_the_dice_wolf():
+            global energy
+
+            if wood >= 500:
+                raft_build.config(state="normal")
+            dice = random.randrange(1, 6)
+            roll.config(state="disabled")
+            energy = energy - 40
+            energygy = "ENERGY: {}%".format(energy)
+            energy_Label.config(text=energygy)
+            if dice == 6:
+                roll_outcome.config(text="The wolf tried to attack you and you were scared of him and ran away.")
+            elif dice == 2:
+                roll_outcome.config(text="The wolf was fast as  lighting")
+            elif dice == 5:
+                roll_outcome.config(text="You got lost in the woods and you lost the wolf")
+            else:
+                roll_outcome.config(text="After hard work you finally have got yourself 4 skin and 5 food.")
+                global skin
+                global food
+                food = food + 5
+                fod = "FOOD: {}".format(food)
+                foodod.config(text=fod)
+                skin = skin + 4
+                skiner = "Skin: {}".format(skin)
+                skinn.config(text=skiner)
+            if energy <= 40:
+                hunting.config(state="disabled")
+            else:
+                hunting.config(state="normal")
+            if energy <= 30:
+                gathering.config(state="disabled")
+                building.config(state="disabled")
+            else:
+                gathering.config(state="normal")
+                building.config(state="normal")
+        roll_title = tkinter.Label(roll_window, text="Roll the dice to find out if you can get your meal", bg="beige")
+        roll_huw_much = tkinter.Label(roll_window, text="You can't roll a 2, 5 and a 6", bg="beige")
+        roll = tkinter.Button(roll_window, text="ROLL", command=roll_the_dice_wolf, bg="green")
+        roll_outcome = tkinter.Label(roll_window, bg="beige")
+        roll_title.pack()
+        roll_huw_much.pack()
+        roll.pack()
+        roll_outcome.pack()
+        roll_window.mainloop()
+    space = tkinter.Label(hunting_window, text="", bg="beige")
+    mice = tkinter.Button(hunting_window, command=rollthedicemice, text="Mice - 1 skin and 1 food")
+    mice_info = tkinter.Label(hunting_window, text="", bg="beige")
+    fish = tkinter.Button(hunting_window, text="Fish - 3 food", command=rollthedicefish, state="disabled")
+    fish_requirements = tkinter.Label(hunting_window, text="", bg="beige")
+    bird = tkinter.Button(hunting_window, text="Bird - 2 skin and 2 food", command=rollthedicebird, state="disabled")
+    bird_requirements = tkinter.Label(hunting_window, text="", bg="beige")
+    buffalo = tkinter.Button(hunting_window, text="Buffalo - 5 skin and 4 food", command=rollthedicebuffalo,
+                             state="disabled")
+    buffalo_requirements = tkinter.Label(hunting_window, text="", bg="beige")
+    rabbit = tkinter.Button(hunting_window, text="Rabbit - 3 skin and 2 food", command=rollthedicerabbit,
+                            state="disabled")
+    rabbit_requirements = tkinter.Label(hunting_window, text="", bg="beige")
+    wolf = tkinter.Button(hunting_window, text="Wolf - 4 skin and 5 food", command=rollthedicewolf, state="disabled")
+    wolf_requirements = tkinter.Label(hunting_window, text="", bg="beige")
+    if energy < 40:
+        mice.config(state="disabled")
+        fish.config(state="disabled")
+        bird.config(state="disabled")
+        buffalo.config(state="disabled")
+        rabbit.config(state="disabled")
+        wolf.config(state="disabled")
+        
+    global spear
+    global bow
+    if spear == 1:
+        rabbit.config(state="normal")
+        buffalo.config(state="normal")
+        fish.config(state="normal")
+    if bow == 1:
+        bird.config(state="normal")
+        wolf.config(state="normal")
+    choice.pack()
+    space.pack()
+    mice.pack()
+    mice_info.pack()
+    fish.pack()
+    fish_requirements.pack()
+    bird.pack()
+    bird_requirements.pack()
+    buffalo.pack()
+    buffalo_requirements.pack()
+    rabbit.pack()
+    rabbit_requirements.pack()
+    wolf.pack()
+    wolf_requirements.pack()
+    hunting_window.mainloop()
+
+def next_day_btn():
+    global day
+    global food
+    day = day + 1
+    global energy
+    energy = 100
+    energygy = "ENERGY: {}%".format(energy)
+    energy_Label.config(text=energygy)
+    global random_wood
+    global random_food
+    global random_rock
+    random_wood = random.randrange(1, 33)
+    random_food = random.randrange(0, 3)
+    random_rock = random.randrange(0, 1)
+    if energy < 40:
+        hunting.config(state="disabled")
+    else:
+        hunting.config(state="normal")
+    if energy < 30:
+        gathering.config(state="disabled")
+        building.config(state="disabled")
+    else:
+        gathering.config(state="normal")
+        building.config(state="normal")
+    if wood >= 500:
+        raft_build.config(state="normal")
+    dayy = "Days: {}".format(day)
+    days.config(text=dayy)
+    if day > 15:
+        game.destroy()
+        game_over = tkinter.Tk()
+        game_over.geometry("400x60")
+        game_over.title("Your score")
+        text_feed = "You haven't escaped the island and died of a horrible death."
+        score_feedback = tkinter.Label(game_over, text=text_feed)
+        score_feedback.pack()
+        quit_btn = tkinter.Button(game_over, text="EXIT", command=game_over.destroy)
+        quit_btn.pack()
+        game_over.mainloop()
+
+def info():
+    start = tkinter.Tk()
+    start.configure(bg="black")
+    start.geometry("450x245")
+    start.title("Survival game")
+    instructions = tkinter.Label(start, bg="grey",
+                                 text="INSTRUSTIONS: \nThis is a story based game. \nYou are stranded on a desert island and you are trying \nto survive until you build your raft. \nYour raft has to consist of at least 500 pieces of wood.\nEvery day you can preform activities. \nThis could be like hunting, gathering wood/food/rock\n or building. \nYou can also build stuff like bows or spears to help you survive. \n A spear unlocks fish, buffalo and rabbit to hunt.\n A bow unlocks bird and wolf to hunt. \nHowever, each activity uses 30% of energy but hunting uses 40% of energy. \nAlso when you sleep till next day you gain up to 100% of energy. \nThe game ends after 15 days.\n Your score is measured by the amount of food you accumulated.\n ENJOY!!!:D")
+    instructions.pack()
+    start.mainloop()
+
+def build_raft():
+    game.destroy()
+    game_win = tkinter.Tk()
+    game_win.configure(bg="Blue")
+    game_win.geometry("350x40")
+    game_win.title("You have won the game.")
+    global food
+    foodlabel = "CONGRATULATIONS, YOU HAVE WON WITH {} POINTS".format(food)
+    fodd = tkinter.Label(game_win, text=foodlabel)
+    fodd.pack()
+
+game = tkinter.Tk()
+game.configure(bg="brown")
+game.geometry("235x250")
+game.title("You are on an island.")
+information = tkinter.Button(game, text="?", command=info, bg="brown")
+information.grid(row=1, column=1)
+energygy = "ENERGY: {}%".format(energy)
+woodod = "WOOD: {}".format(wood)
+fod = "FOOD: {}".format(food)
+dayy = "Days: {}".format(day)
+skiner = "Skin: {}".format(skin)
+skinn = tkinter.Label(game, text=skiner, bg="brown")
+days = tkinter.Label(game, text=dayy, bg="brown")
+energy_Label = tkinter.Label(game, text=energygy, bg="brown")
+foodod = tkinter.Label(game, text=fod, bg="brown")
+woodwod = tkinter.Label(game, text=woodod, bg="brown")
+rockok = "Rock: {}".format(rock)
+rockk = tkinter.Label(game, text=rockok, bg="brown")
+hunting = tkinter.Button(game, text="Hunting", command=hunting_btn, bg="yellow")
+building = tkinter.Button(game, text="Building", command=building_btn, bg="yellow")
+gathering = tkinter.Button(game, text="Gathering", command=gathering_btn, bg="yellow")
+next_day = tkinter.Button(game, text="NEXT DAY", command=next_day_btn, bg="purple")
+raft_build = tkinter.Button(game, text="Build the raft...", command=build_raft, state="disabled", bg="pale green")
+if energy < 40:
+    hunting.config(state="disabled")
+else:
+    hunting.config(state="normal")
+if energy < 30:
+    gathering.config(state="disabled")
+    building.config(state="disabled")
+else:
+    gathering.config(state="normal")
+    building.config(state="normal")
+if wood >= 500:
+    raft_build.config(state="normal")
+days.grid(row=5, column=8)
+energy_Label.grid(row=6, column=8)
+woodwod.grid(row=7, column=8)
+foodod.grid(row=8, column=8)
+hunting.grid(row=11, column=7)
+building.grid(row=11, column=8)
+gathering.grid(row=11, column=9)
+skinn.grid(row=9, column=8)
+rockk.grid(row=10, column=8)
+next_day.grid(row=1, column=8)
+raft_build.grid(row=16, column=8)
+quit_button = tkinter.Button(game, text="Quit", command=game.destroy, bg="red")
+quit_button.grid(row=18, column=8)
+game.mainloop()
