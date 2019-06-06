@@ -7,8 +7,10 @@ wood = 0
 day = 0
 rock = 0
 skin = 0
-bow = 1
-spear = 1
+bow = 0
+spear = 0
+
+
 random_wood = random.randrange(1, 33)
 random_food = random.randrange(0, 3)
 random_rock = random.randrange(0, 2)
@@ -142,9 +144,9 @@ def building_btn():
         woodod = "WOOD: {}".format(wood)
         woodwod.config(text=woodod)
         global rock
-        rock = rock - 2
+        rock = rock-2
         rockok = "Rock: {}".format(rock)
-        rockk.config(rockok)
+        rockk.config(text=rockok)
         spear_button.config(state="disabled")
         if energy < 40:
             hunting.config(state="disabled")
@@ -189,14 +191,10 @@ def building_btn():
     building_window.geometry("500x200")
     building_window.title("What would you like to build?")
     building_window.configure(bg="green")
-    spear_button = tkinter.Button(building_window, command=spearr, state="disabled")
-    bow_button = tkinter.Button(building_window, command=boww, state="disabled")
-    spear_label = tkinter.Label(building_window, text="Spear - to get this spear you have to gather 25 wood and 2 rock", bg="green")
-    bow_label = tkinter.Label(building_window, text="Bow - to get this bow you have to gather 35 wood and 8 skin", bg="green")
+    spear_button = tkinter.Button(building_window, command=spearr, state="disabled", text="Spear - to get this spear you have to gather 25 wood and 2 rock")
+    bow_button = tkinter.Button(building_window, command=boww, state="disabled", text="Bow - to get this bow you have to gather 35 wood and 8 skin")
     bow_button.pack()
-    bow_label.pack()
     spear_button.pack()
-    spear_label.pack()
     global rock
     global skin
     if wood > 24 and rock > 1:
