@@ -7,8 +7,8 @@ wood = 0
 day = 0
 rock = 0
 skin = 0
-bow = 0
-spear = 0
+bow = 1
+spear = 1
 random_wood = random.randrange(1, 33)
 random_food = random.randrange(0, 3)
 random_rock = random.randrange(0, 2)
@@ -239,7 +239,7 @@ def hunting_btn():
             wolf.config(state="disabled")
         hunting_window.destroy()
         roll_window = tkinter.Tk()
-        roll_window.geometry("400x100")
+        roll_window.geometry("300x100")
         roll_window.configure(bg="beige")
         roll_window.title("Roll the dice")
         if energy < 40:
@@ -316,7 +316,7 @@ def hunting_btn():
         hunting_window.destroy()
         roll_window = tkinter.Tk()
         roll_window.configure(bg="beige")
-        roll_window.geometry("400x500")
+        roll_window.geometry("300x100")
         roll_window.title("Roll the dice")
         if energy < 40:
             hunting.config(state="disabled")
@@ -391,7 +391,7 @@ def hunting_btn():
         hunting_window.destroy()
         roll_window = tkinter.Tk()
         roll_window.configure(bg="beige")
-        roll_window.geometry("400x500")
+        roll_window.geometry("300x100")
         roll_window.title("Roll the dice")
         if energy < 40:
             hunting.config(state="disabled")
@@ -467,8 +467,8 @@ def hunting_btn():
             wolf.config(state="disabled")
         hunting_window.destroy()
         roll_window = tkinter.Tk()
-        roll_window.configure(bg="green")
-        roll_window.geometry("400x500")
+        roll_window.configure(bg="beige")
+        roll_window.geometry("300x100")
         roll_window.title("Roll the dice")
         energy_Label.config(text=energygy)
         if energy < 40:
@@ -549,7 +549,7 @@ def hunting_btn():
         hunting_window.destroy()
         roll_window = tkinter.Tk()
         roll_window.configure(bg="beige")
-        roll_window.geometry("400x500")
+        roll_window.geometry("300x100")
         roll_window.title("Roll the dice")
         if energy < 40:
             hunting.config(state="disabled")
@@ -626,7 +626,7 @@ def hunting_btn():
         hunting_window.destroy()
         roll_window = tkinter.Tk()
         roll_window.configure(bg="beige")
-        roll_window.geometry("400x500")
+        roll_window.geometry("300x100")
         roll_window.title("Roll the dice")
         if energy < 40:
             hunting.config(state="disabled")
